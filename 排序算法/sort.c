@@ -44,7 +44,7 @@ void insertSort(int arr[], int n) {
     }
 }
 
-int parition(int arr[], int left, int right) {
+int partition(int arr[], int left, int right) {
     int pivot = arr[left];
     while (left < right) {
         while (left < right && arr[right] >= pivot) {
@@ -62,7 +62,7 @@ int parition(int arr[], int left, int right) {
 
 void quickSort(int arr[], int left, int right) {
     if (left < right) {
-        int parti = parition(arr, left, right);
+        int parti = partition(arr, left, right);
         quickSort(arr, left, parti - 1);
         quickSort(arr, parti + 1, right);
     }
@@ -143,8 +143,8 @@ void mergeSort(int arr[], int n) {
 }
 
 void countSort(int arr[], int n) {
-    int *counts = (int *)malloc(sizeof(int) * 100);
-    memset(counts, 0, 100);
+    int counts[100];
+    memset(counts, 0, sizeof(counts));
     for (int i = 0; i < n; ++i) {
         ++counts[arr[i]];
     }
