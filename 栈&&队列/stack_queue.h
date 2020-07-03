@@ -26,7 +26,7 @@ typedef struct que
 
 void pushQue(pQue, int);
 void popQue(pQue);
-int isEmpty(pQue);
+int isEmptyQue(pQue);
 void initQue(pQue);
 int getSizeQue(pQue);
 int getTopQue(pQue);

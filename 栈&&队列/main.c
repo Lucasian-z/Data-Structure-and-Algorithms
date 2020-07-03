@@ -2,13 +2,13 @@
 
 int main()
 {
-    pStack sta = (pStack)malloc(sizeof(Stack));
-    sta->size = 0;
+    //pStack sta = (pStack)malloc(sizeof(Stack));
+    //sta->size = 0;
     // for (int i = 0; i < 5; ++i) {
     //     push(&sta, i);
     // }
     
-    pQue que;
+    pQue que = (pQue)malloc(sizeof(Que));
     initQue(que);
     pushQue(que, 4);
     pushQue(que, 43);

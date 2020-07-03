@@ -13,6 +13,7 @@ void pop(pStack sta) {
         pNode p = sta->head;
         sta->head = p->next;
         free(p);
+        --sta->size;
     }
 }
 
@@ -40,7 +41,7 @@ int getSizeQue(pQue que) {
     return que->size;
 }
 
-int isEmpty(pQue que) {
+int isEmptyQue(pQue que) {
     return que->size == 0;
 }
 
@@ -48,7 +49,7 @@ void pushQue(pQue que, int x) {
     pNode newNode = (pNode)malloc(sizeof(Node));
     newNode->val = x;
     newNode->next = NULL;
-    if (isEmpty(que)) {
+    if (isEmptyQue(que)) {
         que->head = newNode;
         que->tail = newNode;
     }else {
