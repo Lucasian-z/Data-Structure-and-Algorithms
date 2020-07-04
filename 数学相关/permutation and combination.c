@@ -85,10 +85,62 @@ void test3() {
     printf("%d皇后问题有%d种方案\n", n, cnt);
 }
 
+//计算组合数
+//递归
+long long res[67][67] = {0};
+long long C(long long m, long long n) {
+    if (n == 0 || m == n) return 1;
+    if (res[m][n]) return res[m][n];
+    return res[m][n] = C(m-1, n) + C(m-1, n-1);
+}
+
+long long C2(long long m, long long n) {
+    long long res = 1;
+    for (long long i = 1; i <= n; ++i) {
+        res = res * (m - n + i) / i;
+    }
+    return res;
+}
+
+void test4() {
+    long long m, n;
+    scanf("%lld%lld", &m, &n);
+    printf("从%d中选%d有%d种方案\n", m, n, C2(m, n));
+}
+
+//计算组合数%p
+//法1:递归
+int res1[1010][1010] = {0};
+int C3(int m, int n, int p) {
+    if (n == 0 || m == n) return 1;
+    if (res1[m][n]) return res1[m][n];
+    return res1[m][n] = (C3(m-1, n, p) + C3(m-1, n-1, p)) % p;
+}
+//法2: Lucas定理,要求p为素数
+int Lucas(int m, int n, int p) {
+    if (n == 0) return 1;
+    return C3(m % p, n % p, p) * Lucas(m / p, n / p, p) % p;
+}
+
+void test5() {
+    int m, n, p;
+    scanf("%d%d%d", &m, &n, &p);
+    printf("%d\n", C3(m, n, p));
+}
+
+void test6() {
+    int m, n, p;
+    scanf("%d%d%d", &m, &n, &p);
+    printf("%d\n", Lucas(m, n, p));
+}
+
 int main()
 {
     //test1();
     //test2();
-    test3();
+    //test3();
+    //test4();
+    //test5();
+    test6();
     return 0;
 }
