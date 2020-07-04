@@ -5,7 +5,9 @@
 
 //埃氏筛法
 void Erato(int a[]) {
-    memset(a, 1, N);
+    for (int i = 0; i < N; ++i) {
+        a[i] = 1;
+    }
     for (int i = 2; i < N; ++i) {
         if (a[i]) {
             for (int j = i; i * j < N; ++j) {
