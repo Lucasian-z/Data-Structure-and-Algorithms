@@ -4,28 +4,30 @@
 #define N 100005
 int e[N], ne[N], idx = 0, head = 0;
 
+// 链表初始化
 void init() {
     idx = 0;
     head = -1;
 }
 
+// 头插
 void insertHead(int x) {
     e[idx] = x;
     ne[idx] = head;
     head = idx++;
 }
 
+// 在第k个插入的数后面插入一个数
 void insertK(int k, int x) {
     e[idx] = x;
     ne[idx] = ne[k];
     ne[k] = idx++;
 }
 
+// 表示删除第k个插入的数后面的数，当k为0时，表示删除头结点
 void removeK(int k) {
     ne[k] = ne[ne[k]];
 }
-
-
 
 int main()
 {
